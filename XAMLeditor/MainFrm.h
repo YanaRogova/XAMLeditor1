@@ -36,6 +36,8 @@ public:
 // Созданные функции схемы сообщений
 protected:
 	afx_msg void OnClickButton();
+	afx_msg void OnFileOpen();
+	afx_msg bool EditXamlFile(std::string name, bool isDeleted, char prefix);
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	DECLARE_MESSAGE_MAP()
 };

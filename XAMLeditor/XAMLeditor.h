@@ -9,7 +9,7 @@
 
 #include "resource.h"       // основные символы
 
-
+#define ID_BUTTON1 1309
 #define ID_BUTTON 1300
 #define ID_EDIT_X  1301
 #define ID_EDIT_Y  1302

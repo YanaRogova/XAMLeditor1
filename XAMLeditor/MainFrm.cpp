@@ -5,6 +5,8 @@
 #include "pch.h"
 #include "framework.h"
 #include "XAMLeditor.h"
+#include <string>
+#include <fstream>
 
 #include "MainFrm.h"
 
@@ -20,6 +22,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_WM_ERASEBKGND()
 	ON_COMMAND(ID_BUTTON, &CMainFrame::OnClickButton)
+	ON_COMMAND(ID_BUTTON1, &CMainFrame::OnFileOpen)
 END_MESSAGE_MAP()
 
 // Создание или уничтожение CMainFrame
@@ -77,8 +80,8 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 
 void CMainFrame::OnClickButton()
 {
-	//m_wndButton.OpenClipboard();
-
+	CFileDialog dlg(true);
+	dlg.DoModal();
 }
 
 BOOL CMainFrame::OnEraseBkgnd(CDC* pDC)
@@ -87,3 +90,91 @@ BOOL CMainFrame::OnEraseBkgnd(CDC* pDC)
 	return 0;
 }
 
+
+
+
+void CMainFrame::OnFileOpen()
+{
+	int iBufferSize = 100000;
+	CFileDialog dlg(TRUE, NULL, _T("*.xaml"), OFN_ALLOWMULTISELECT |
+		OFN_NOVALIDATE, _T("XAML vertex icon (*.xaml)|*.xaml|"));
+
+	dlg.m_ofn.nMaxFile = iBufferSize;
+	char* cNewBuffer = new char[iBufferSize];
+	dlg.m_ofn.lpstrFile = cNewBuffer;
+	dlg.m_ofn.lpstrFile[0] = NULL;
+	int result = dlg.DoModal();
+	if (result == IDOK)
+	{
+		POSITION ps = dlg.GetStartPosition();
+		while (ps)
+		{
+			if (!EditXamlFile((std::string)dlg.GetNextPathName(ps)))
+				AfxMessageBox(_T("Error! File ") + dlg.GetPathName() + _T(" don't open."));
+		}
+	}
+	delete[]cNewBuffer;
+}
+
+bool CMainFrame::EditXamlFile(std::string name, bool isDeleted, char prefix)
+{
+	std::string tempName = name;
+	tempName.insert(tempName.length() - 5, 1, prefix);
+
+	std::ifstream file(name, std::ios_base::in);
+	std::ofstream newFile(tempName, std::ios_base::out | std::ios_base::trunc);
+
+	int counter = 0;
+	std::string workString;
+
+	if (!file.is_open() || !newFile.is_open())
+	{
+		return false;
+	}
+
+	while (!file.eof())
+	{
+		std::getline(file, workString);
+		if ((workString.find("/Canvas") != std::string::npos))
+		{
+			if (counter == 1)
+				workString = "</Viewbox>";
+			else
+			{
+				while (workString.find("x:Name=") != std::string::npos)
+					workString.erase(workString.find("x:Name="), 2);
+			}
+
+			counter--;
+		}
+		else if (workString.find("<Canvas") != std::string::npos)
+		{
+			if (counter == 0)
+				workString = "<Viewbox xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\" Stretch=\"Uniform\">";
+			else
+			{
+				while (workString.find("x:Name=") != std::string::npos)
+					workString.erase(workString.find("x:Name="), 2);
+			}
+
+			counter++;
+		}
+		else
+		{
+			while (workString.find("x:Name=") != std::string::npos)
+				workString.erase(workString.find("x:Name="), 2);
+		}
+
+
+		newFile << workString << std::endl;
+	}
+
+	file.close();
+
+	if (isDeleted)
+		remove(name.c_str());
+
+	newFile.close();
+
+	return true;
+}
