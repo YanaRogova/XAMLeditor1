@@ -37,7 +37,7 @@ public:
 protected:
 	afx_msg void OnClickButton();
 	afx_msg void OnFileOpen();
-	afx_msg bool EditXamlFile(std::string name, bool isDeleted, char prefix);
+	afx_msg bool EditXamlFile(std::string name, bool isDeleted = false, char prefix = 'N');
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	DECLARE_MESSAGE_MAP()
 };

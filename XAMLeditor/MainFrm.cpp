@@ -101,7 +101,7 @@ void CMainFrame::OnFileOpen()
 
 	dlg.m_ofn.nMaxFile = iBufferSize;
 	char* cNewBuffer = new char[iBufferSize];
-	dlg.m_ofn.lpstrFile = cNewBuffer;
+	dlg.m_ofn.lpstrFile = (LPWSTR)cNewBuffer;
 	dlg.m_ofn.lpstrFile[0] = NULL;
 	int result = dlg.DoModal();
 	if (result == IDOK)
@@ -116,7 +116,7 @@ void CMainFrame::OnFileOpen()
 	delete[]cNewBuffer;
 }
 
-bool CMainFrame::EditXamlFile(std::string name, bool isDeleted, char prefix)
+bool CMainFrame::EditXamlFile(std::string name, bool isDeleted=false, char prefix='N')
 {
 	std::string tempName = name;
 	tempName.insert(tempName.length() - 5, 1, prefix);

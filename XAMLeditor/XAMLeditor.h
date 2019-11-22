@@ -9,14 +9,13 @@
 
 #include "resource.h"       // основные символы
 
-#define ID_BUTTON1 1309
 #define ID_BUTTON 1300
 #define ID_EDIT_X  1301
 #define ID_EDIT_Y  1302
 #define ID_STATIC 1303
 #define ID_STATIC_X 1304
 #define ID_STATIC_Y 1305
-#define ID_FILEDIALOG 1306
+#define ID_BUTTON1 1306
 // CXAMLeditorApp:
 // Сведения о реализации этого класса: XAMLeditor.cpp
 //
