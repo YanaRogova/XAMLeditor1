@@ -1,12 +1,9 @@
-﻿
-// MainFrm.cpp: реализация класса CMainFrame
-//
-
-#include "pch.h"
+﻿#include "pch.h"
 #include "framework.h"
 #include "XAMLeditor.h"
 #include <string>
 #include <fstream>
+#include <iostream>
 
 #include "MainFrm.h"
 
@@ -14,46 +11,44 @@
 #define new DEBUG_NEW
 #endif
 
-// CMainFrame
-
 IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_WM_ERASEBKGND()
 	ON_COMMAND(ID_BUTTON, &CMainFrame::OnClickButton)
-	ON_COMMAND(ID_BUTTON1, &CMainFrame::OnFileOpen)
+	
+	
 END_MESSAGE_MAP()
 
-// Создание или уничтожение CMainFrame
+CMainFrame::CMainFrame() noexcept {}
 
-CMainFrame::CMainFrame() noexcept
-{
-	// TODO: добавьте код инициализации члена
-}
-
-CMainFrame::~CMainFrame()
-{
-}
+CMainFrame::~CMainFrame() {}
 
 int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
-	
-	m_wndButton.Create(_T("Конвертировать файл"), WS_VISIBLE | WS_CHILD,
+	CString str;
+	str.LoadString(IDS_BUTTON_CONVERTER);
+	m_wndButton.Create(str, WS_VISIBLE | WS_CHILD | WS_TABSTOP,
 		CRect(0, 0, 200, 100), this, ID_BUTTON);
-
-	m_wndStatic.Create(_T("Привести к размеру:"), WS_VISIBLE | WS_CHILD,
+	str.LoadString(IDS_STATIC);
+	m_wndStatic.Create(str, WS_VISIBLE | WS_CHILD,
 		CRect(2, 110, 150, 130), this, ID_STATIC);
 
 	m_wndStaticX.Create(_T("X:"), WS_VISIBLE | WS_CHILD,
 		CRect(2, 140, 17, 160), this, ID_STATIC_X);
-	m_wndEditX.Create(WS_VISIBLE | WS_CHILD | ES_NUMBER,
+	m_wndEditX.Create(WS_VISIBLE | WS_CHILD | ES_NUMBER | WS_TABSTOP,
 		CRect(20, 140, 130, 160), this, ID_EDIT_X);
 
 	m_wndStaticY.Create(_T("Y:"), WS_VISIBLE | WS_CHILD,
 		CRect(2, 170, 17, 190), this, ID_STATIC_Y);
-	m_wndEditY.Create(WS_VISIBLE | WS_CHILD | ES_NUMBER,
+	m_wndEditY.Create(WS_VISIBLE | WS_CHILD | ES_NUMBER | WS_TABSTOP,
 		CRect(20, 170, 130, 190), this, ID_EDIT_Y);
+
+	str.LoadString(IDS_DEBAG);
+	m_wndCheckbox.Create(str, WS_VISIBLE | WS_CHILD | WS_TABSTOP | BS_AUTOCHECKBOX,
+		CRect(5, 200, 80, 220), this, ID_CHECKBOX);
+
 
 	return 0;
 }
@@ -62,8 +57,6 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
 	if( !CFrameWnd::PreCreateWindow(cs) )
 		return FALSE;
-	// TODO: изменить класс Window или стили посредством изменения
-	//  CREATESTRUCT cs
 
 	cs.style = WS_BORDER | WS_CAPTION | FWS_ADDTOTITLE | WS_MINIMIZEBOX | WS_SYSMENU;
 
@@ -80,8 +73,7 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 
 void CMainFrame::OnClickButton()
 {
-	CFileDialog dlg(true);
-	dlg.DoModal();
+	ConvertXamlFiles();
 }
 
 BOOL CMainFrame::OnEraseBkgnd(CDC* pDC)
@@ -90,36 +82,33 @@ BOOL CMainFrame::OnEraseBkgnd(CDC* pDC)
 	return 0;
 }
 
-
-
-
-void CMainFrame::OnFileOpen()
+void CMainFrame::ConvertXamlFiles()
 {
 	int iBufferSize = 100000;
 	CFileDialog dlg(TRUE, NULL, _T("*.xaml"), OFN_ALLOWMULTISELECT |
 		OFN_NOVALIDATE, _T("XAML vertex icon (*.xaml)|*.xaml|"));
 
-	dlg.m_ofn.nMaxFile = iBufferSize;
-	char* cNewBuffer = new char[iBufferSize];
-	dlg.m_ofn.lpstrFile = (LPWSTR)cNewBuffer;
-	dlg.m_ofn.lpstrFile[0] = NULL;
 	int result = dlg.DoModal();
 	if (result == IDOK)
 	{
 		POSITION ps = dlg.GetStartPosition();
 		while (ps)
 		{
-			if (!EditXamlFile((std::string)dlg.GetNextPathName(ps)))
+			if (!EditXamlFile(dlg.GetNextPathName(ps)))
 				AfxMessageBox(_T("Error! File ") + dlg.GetPathName() + _T(" don't open."));
+			else
+			{
+				CMsgDlg msgDlg;
+				msgDlg.DoModal();
+			}
 		}
 	}
-	delete[]cNewBuffer;
 }
 
-bool CMainFrame::EditXamlFile(std::string name, bool isDeleted=false, char prefix='N')
+bool CMainFrame::EditXamlFile(CString name, bool isDeleted, char prefix)
 {
-	std::string tempName = name;
-	tempName.insert(tempName.length() - 5, 1, prefix);
+	CString tempName = name;
+	tempName.Insert(tempName.GetLength() - 5, prefix);
 
 	std::ifstream file(name, std::ios_base::in);
 	std::ofstream newFile(tempName, std::ios_base::out | std::ios_base::trunc);
@@ -164,17 +153,35 @@ bool CMainFrame::EditXamlFile(std::string name, bool isDeleted=false, char prefi
 			while (workString.find("x:Name=") != std::string::npos)
 				workString.erase(workString.find("x:Name="), 2);
 		}
-
-
+		if (m_wndCheckbox.GetCheck())
+		{
+			while (workString.find("#FFFFFFFF") != std::string::npos)
+			{
+				int index = workString.find("#FFFFFFFF");
+				workString.erase(index, 9);
+				workString.insert(index, "#FF23FC7F");
+			}
+			while (workString.find("#FFFFFF\"") != std::string::npos)
+			{
+				int index = workString.find("#FFFFFF\"");
+				workString.erase(index, 7);
+				workString.insert(index, "#23FC7F");
+			}
+			while (workString.find("#FFFFFF\'") != std::string::npos)
+			{
+				int index = workString.find("#FFFFFF\'");
+				workString.erase(index, 7);
+				workString.insert(index, "#23FC7F");
+			}
+		}
 		newFile << workString << std::endl;
 	}
-
-	file.close();
-
-	if (isDeleted)
-		remove(name.c_str());
-
 	newFile.close();
-
+	file.close();
+	/*if (isDeleted)
+		remove()*/
 	return true;
 }
+
+
+

@@ -1,4 +1,4 @@
-//Скрипт ресурсов, созданный в Microsoft Visual C++.
+// Microsoft Visual C++ generated resource script.
 //
 #pragma code_page(65001)
 
@@ -7,7 +7,7 @@
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
 //
-// Создано из ресурса TEXTINCLUDE 2.
+// Generated from the TEXTINCLUDE 2 resource.
 //
 #ifndef APSTUDIO_INVOKED
 #include "targetver.h"
@@ -18,162 +18,130 @@
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
-#ifdef APSTUDIO_INVOKED
-
 /////////////////////////////////////////////////////////////////////////////
-//
-// TEXTINCLUDE
-//
-
-1 TEXTINCLUDE
-BEGIN
-    "resource.h\0"
-END
-
-2 TEXTINCLUDE
-BEGIN
-    "#ifndef APSTUDIO_INVOKED\r\n"
-    "#include ""targetver.h""\r\n"
-    "#endif\r\n"
-    "#include ""afxres.h""\r\n"
-    "#include ""verrsrc.h""\r\n"
-    "\0"
-END
-
-3 TEXTINCLUDE
-BEGIN
-    "#define _AFX_NO_OLE_RESOURCES\r\n"
-    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
-    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
-    "\r\n"
-    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)\r\n"
-    "LANGUAGE 25, 1\r\n"
-    "#include ""res\\XAMLeditor.rc2""  // ресурсы, не редактируемые в Microsoft Visual C++\r\n"
-    "#include ""l.RUS\\afxres.rc""      // Стандартные компоненты\r\n"
-    "#endif\r\n"
-    "\0"
-END
-
-#endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Значок
-//
-
-// Значок с наименьшим значением идентификатора помещается первым, чтобы гарантировать использование
-// идентичного значка приложения для всех систем.
+// Русский (Россия) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
-LANGUAGE 25, 1
-IDR_MAINFRAME           ICON         "res\\XAMLeditor.ico"
-IDR_XAMLeditorTYPE         ICON         "res\\XAMLeditorDoc.ico"
-#endif
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
-LANGUAGE 25, 1
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Меню
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\XAMLeditor.ico"
+
+IDR_XAMLeditorTYPE      ICON                    "res\\XAMLeditorDoc.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
 //
 
 IDR_MAINFRAME MENU
 BEGIN
     POPUP "&Файл"
     BEGIN
-        MENUITEM "Созд&ать\tCtrl+N",                ID_FILE_NEW
-        MENUITEM "&Открыть...\tCtrl+O",            ID_FILE_OPEN
-        MENUITEM "Со&хранить\tCtrl+S",               ID_FILE_SAVE
-        MENUITEM "Сохранить &как...",                 ID_FILE_SAVE_AS
+        MENUITEM "Созд&ать\tCtrl+N",            ID_FILE_NEW
+        MENUITEM "&Открыть...\tCtrl+O",         ID_FILE_OPEN
+        MENUITEM "Со&хранить\tCtrl+S",          ID_FILE_SAVE
+        MENUITEM "Сохранить &как...",           ID_FILE_SAVE_AS
         MENUITEM SEPARATOR
-        MENUITEM "В&ыход",                       ID_APP_EXIT
+        MENUITEM "В&ыход",                      ID_APP_EXIT
     END
     POPUP "&Правка"
     BEGIN
-        MENUITEM "&Отменить\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Отменить\tCtrl+Z",           ID_EDIT_UNDO
         MENUITEM SEPARATOR
-        MENUITEM "&Вырезать\tCtrl+X",                ID_EDIT_CUT
-        MENUITEM "&Копировать\tCtrl+C",               ID_EDIT_COPY
-        MENUITEM "Вст&авить\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "&Вырезать\tCtrl+X",           ID_EDIT_CUT
+        MENUITEM "&Копировать\tCtrl+C",         ID_EDIT_COPY
+        MENUITEM "Вст&авить\tCtrl+V",           ID_EDIT_PASTE
     END
     POPUP "&Справка"
     BEGIN
-        MENUITEM "&Сведения о XAMLeditor...",          ID_APP_ABOUT
+        MENUITEM "&Сведения о XAMLeditor...",   ID_APP_ABOUT
     END
 END
 
-
-
 IDR_THEME_MENU MENU
 BEGIN
-    MENUITEM "Office 2007 (&голубой стиль)",       ID_VIEW_APPLOOK_OFF_2007_BLUE
-    MENUITEM "Office 2007 (ч&ерный стиль)",      ID_VIEW_APPLOOK_OFF_2007_BLACK
-    MENUITEM "Office 2007 (&серебристый стиль)",     ID_VIEW_APPLOOK_OFF_2007_SILVER
-    MENUITEM "Office 2007 (&зеленовато-голубой стиль)",       ID_VIEW_APPLOOK_OFF_2007_AQUA
-    MENUITEM "Win&dows 7",                      ID_VIEW_APPLOOK_WINDOWS_7
+    MENUITEM "Office 2007 (&голубой стиль)", ID_VIEW_APPLOOK_OFF_2007_BLUE
+    MENUITEM "Office 2007 (ч&ерный стиль)", ID_VIEW_APPLOOK_OFF_2007_BLACK
+    MENUITEM "Office 2007 (&серебристый стиль)", ID_VIEW_APPLOOK_OFF_2007_SILVER
+    MENUITEM "Office 2007 (&зеленовато-голубой стиль)", ID_VIEW_APPLOOK_OFF_2007_AQUA
+    MENUITEM "Win&dows 7",                  ID_VIEW_APPLOOK_WINDOWS_7
 END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Сочетание клавиш
+// Accelerator
 //
 
 IDR_MAINFRAME ACCELERATORS
 BEGIN
-    "N",            ID_FILE_NEW,            VIRTKEY,CONTROL
-    "O",            ID_FILE_OPEN,           VIRTKEY,CONTROL
-    "S",            ID_FILE_SAVE,           VIRTKEY,CONTROL
-	"Z",            ID_EDIT_UNDO,           VIRTKEY,CONTROL
-	"X",            ID_EDIT_CUT,            VIRTKEY,CONTROL
-	"C",            ID_EDIT_COPY,           VIRTKEY,CONTROL
-	"V",            ID_EDIT_PASTE,          VIRTKEY,CONTROL
-    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY,ALT
-    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY,SHIFT
-    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY,CONTROL
-    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY,SHIFT
-    VK_F6,          ID_NEXT_PANE,           VIRTKEY
-    VK_F6,          ID_PREV_PANE,           VIRTKEY,SHIFT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
 END
-
-
 
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Диалоговое окно
+// Dialog
 //
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "О XAMLeditor"
-FONT 8, "MS Shell Dlg"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
     LTEXT           "XAMLeditor, версия 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
     LTEXT           "(C) 2019 г.",IDC_STATIC,42,26,114,8
     DEFPUSHBUTTON   "ОК",IDOK,113,41,50,14,WS_GROUP
 END
 
+IDD_MSG_DIALOG DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Сообщение"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    LTEXT           "Конвертация проведена успешно.",-1,24,23,121,8,SS_NOPREFIX
+    DEFPUSHBUTTON   "ОК",IDOK,113,41,50,14,WS_GROUP
+END
 
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// Версия
+// Version
 //
 
-VS_VERSION_INFO     VERSIONINFO
-  FILEVERSION       1,0,0,1
-  PRODUCTVERSION    1,0,0,1
- FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
- FILEFLAGS VS_FF_DEBUG
+ FILEFLAGS 0x1L
 #else
  FILEFLAGS 0x0L
 #endif
- FILEOS VOS_NT_WINDOWS32
- FILETYPE VFT_APP
- FILESUBTYPE VFT2_UNKNOWN
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
@@ -181,19 +149,20 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "TODO: <название компании>"
             VALUE "FileDescription", "XAMLeditor"
-            VALUE "FileVersion",     "1.0.0.1"
-            VALUE "InternalName",    "XAMLeditor.exe"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "XAMLeditor.exe"
             VALUE "LegalCopyright", "TODO: (c) <название компании>.  Все права защищены."
-            VALUE "OriginalFilename","XAMLeditor.exe"
+            VALUE "OriginalFilename", "XAMLeditor.exe"
             VALUE "ProductName", "TODO: <Название продукта>"
-            VALUE "ProductVersion",  "1.0.0.1"
+            VALUE "ProductVersion", "1.0.0.1"
         END
     END
     BLOCK "VarFileInfo"
     BEGIN
-        VALUE "Translation", 0x0419, 1200
+        VALUE "Translation", 0x419, 1200
     END
 END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -210,25 +179,50 @@ BEGIN
         TOPMARGIN, 7
         BOTTOMMARGIN, 55
     END
+
+    IDD_MSG_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
 END
 #endif    // APSTUDIO_INVOKED
 
+
 /////////////////////////////////////////////////////////////////////////////
 //
-// Таблица строк
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_MSG_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
 //
 
 STRINGTABLE
 BEGIN
-// В приложениях, предназначенных не для Mac, две дополнительные подстроки удаляются
     IDR_MAINFRAME           "XAMLeditor\n\nXAMLeditor\n\n\nXAMLeditor.Document\nXAMLeditor.Document"
-
 END
+
 STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "XAMLeditor"
     AFX_IDS_IDLEMESSAGE     "Готово"
 END
+
 STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
@@ -238,6 +232,7 @@ BEGIN
     ID_INDICATOR_OVR        "OVR"
     ID_INDICATOR_REC        "REC"
 END
+
 STRINGTABLE
 BEGIN
     ID_FILE_NEW             "Создание нового документа\nСоздать"
@@ -245,8 +240,16 @@ BEGIN
     ID_FILE_CLOSE           "Закрытие активного документа\nЗакрыть"
     ID_FILE_SAVE            "Сохранение активного документа\nСохранить"
     ID_FILE_SAVE_AS         "Сохранение активного документа под новым именем\nСохранить как"
+END
+
+STRINGTABLE
+BEGIN
     ID_APP_ABOUT            "Вывод сведений о программе, ее версии и авторских правах\nО программе"
     ID_APP_EXIT             "Завершение работы приложения с запросом на сохранение документов\nВыход"
+END
+
+STRINGTABLE
+BEGIN
     ID_FILE_MRU_FILE1       "Открытие данного документа"
     ID_FILE_MRU_FILE2       "Открытие данного документа"
     ID_FILE_MRU_FILE3       "Открытие данного документа"
@@ -263,9 +266,21 @@ BEGIN
     ID_FILE_MRU_FILE14      "Открытие данного документа"
     ID_FILE_MRU_FILE15      "Открытие данного документа"
     ID_FILE_MRU_FILE16      "Открытие данного документа"
+END
+
+STRINGTABLE
+BEGIN
     ID_NEXT_PANE            "Переход к следующей области окна\nСледующая область"
     ID_PREV_PANE            "Возврат к предыдущей области окна\nПредыдущая область"
+END
+
+STRINGTABLE
+BEGIN
     ID_WINDOW_SPLIT         "Разделение активного окна на области\nРазделить"
+END
+
+STRINGTABLE
+BEGIN
     ID_EDIT_CLEAR           "Удаление выделенного фрагмента\nУдалить"
     ID_EDIT_CLEAR_ALL       "Полное удаление содержимого документа\nУдалить все"
     ID_EDIT_COPY            "Копирование выделенного фрагмента в буфер обмена\nКопировать"
@@ -277,6 +292,10 @@ BEGIN
     ID_EDIT_SELECT_ALL      "Выделение всего документа\nВыделить все"
     ID_EDIT_UNDO            "Отмена последнего действия\nОтменить"
     ID_EDIT_REDO            "Повторное выполнение последнего отмененного действия\nВернуть"
+END
+
+STRINGTABLE
+BEGIN
     ID_VIEW_CAPTION_BAR     "Показать или скрыть заголовок окна\nПереключение заголовка окна"
 END
 
@@ -289,26 +308,197 @@ BEGIN
     AFX_IDS_SCNEXTWINDOW    "Переход к следующему окну документа"
     AFX_IDS_SCPREVWINDOW    "Переход к предыдущему окну документа"
     AFX_IDS_SCCLOSE         "Закрытие активного окна с запросом на сохранение документов"
-    AFX_IDS_SCRESTORE       "Восстановление исходных размеров окна"
-    AFX_IDS_SCTASKLIST      "Переход к списку задач"
 END
 
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Восстановление исходных размеров окна"
+    AFX_IDS_SCTASKLIST      "Переход к списку задач"
+    IDS_BUTTON_CONVERTER    "Конвертировать файл"
+    IDS_STATIC              "Привести к размеру:"
+    IDS_DEBAG               "Отладка"
+END
 
-#endif
+#endif    // Русский (Россия) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Нейтральный (по умолчанию) (неизвестное значение дополнительного кода языка: 0x8) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ZZZ)
+LANGUAGE LANG_NEUTRAL, 0x8
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "#include ""verrsrc.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)\r\n"
+    "LANGUAGE 25, 1\r\n"
+    "#include ""res\\XAMLeditor.rc2""  // Р РЋР вЂљР В Р’ВµР РЋР С“Р РЋРЎвЂњР РЋР вЂљР РЋР С“Р РЋРІР‚в„–, Р В Р вЂ¦Р В Р’Вµ Р РЋР вЂљР В Р’ВµР В РўвЂР В Р’В°Р В РЎвЂќР РЋРІР‚С™Р В РЎвЂР РЋР вЂљР РЋРЎвЂњР В Р’ВµР В РЎВР РЋРІР‚в„–Р В Р’Вµ Р В Р вЂ  Microsoft Visual C++\r\n"
+    "#include ""l.RUS\\afxres.rc""      // Р В Р Р‹Р РЋРІР‚С™Р В Р’В°Р В Р вЂ¦Р В РўвЂР В Р’В°Р РЋР вЂљР РЋРІР‚С™Р В Р вЂ¦Р РЋРІР‚в„–Р В Р’Вµ Р В РЎвЂќР В РЎвЂўР В РЎВР В РЎвЂ”Р В РЎвЂўР В Р вЂ¦Р В Р’ВµР В Р вЂ¦Р РЋРІР‚С™Р РЋРІР‚в„–\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "XAMLeditor\n\nXAMLeditor\n\n\nXAMLeditor.Document\nXAMLeditor.Document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_CAPTION_BAR     "Show or hide window title\nSwitch window title"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "XAMLeditor"
+    AFX_IDS_IDLEMESSAGE     "Done"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "Create a new document\nCreate"
+    ID_FILE_OPEN            "Opening an existing document\nOpen"
+    ID_FILE_CLOSE           "Close active document\nClose"
+    ID_FILE_SAVE            "Saving the active document\nSave"
+    ID_FILE_SAVE_AS         "Saving the active document with a new name nSave as"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "Opening this document"
+    ID_FILE_MRU_FILE2       "Opening this document"
+    ID_FILE_MRU_FILE3       "Opening this document"
+    ID_FILE_MRU_FILE4       "Opening this document"
+    ID_FILE_MRU_FILE5       "Opening this document"
+    ID_FILE_MRU_FILE6       "Opening this document"
+    ID_FILE_MRU_FILE7       "Opening this document"
+    ID_FILE_MRU_FILE8       "Opening this document"
+    ID_FILE_MRU_FILE9       "Opening this document"
+    ID_FILE_MRU_FILE10      "Opening this document"
+    ID_FILE_MRU_FILE11      "Opening this document"
+    ID_FILE_MRU_FILE12      "Opening this document"
+    ID_FILE_MRU_FILE13      "Opening this document"
+    ID_FILE_MRU_FILE14      "Opening this document"
+    ID_FILE_MRU_FILE15      "Opening this document"
+    ID_FILE_MRU_FILE16      "Opening this document"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "Delete selection\nRemove"
+    ID_EDIT_CLEAR_ALL       "Complete deletion of document contents\n Deleteall"
+    ID_EDIT_COPY            "Copy selection to clipboard\nCopy"
+    ID_EDIT_CUT             "Delete selected clipboard\nCut"
+    ID_EDIT_FIND            "Search for specified text\nFind"
+    ID_EDIT_PASTE           "Paste the contents of the clipboard\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace the specified text with another text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect all"
+    ID_EDIT_UNDO            "Cancel the last action\nCancel"
+    ID_EDIT_REDO            "Re-execute the last canceled action\nReturn"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into areas\nSplit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "Displaying information about the program, its version and copyright\nAbout the program"
+    ID_APP_EXIT             "Shutting down the application with a request to save documents\nExit"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "Go to the next area of the window\nNext area"
+    ID_PREV_PANE            "Return to the previous area of the window\nPrevious area"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "Window resizing"
+    AFX_IDS_SCMOVE          "Change the position of the window"
+    AFX_IDS_SCMINIMIZE      "Minimize a window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Maximize a window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Go to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Closing the active window with a request to save documents"
+    AFX_IDS_SCCLOSE         "Закрытие активного окна с запросом на сохранение документов"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore original window size"
+    AFX_IDS_SCTASKLIST      "Go to task list"
+    IDS_BUTTON_CONVERTER    "Contvert file"
+    IDS_STATIC              "Resize:"
+    IDS_DEBAG               "Debug"
+END
+
+#endif    // Нейтральный (по умолчанию) (неизвестное значение дополнительного кода языка: 0x8) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
 
 #ifndef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
 //
-// Создано из ресурса TEXTINCLUDE 3.
+// Generated from the TEXTINCLUDE 3 resource.
 //
-
 #define _AFX_NO_OLE_RESOURCES
 #define _AFX_NO_TRACKER_RESOURCES
 #define _AFX_NO_PROPERTY_RESOURCES
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
 LANGUAGE 25, 1
-#include "res\\XAMLeditor.rc2"  // ресурсы, не редактируемые в Microsoft Visual C++
-#include "l.RUS\\afxres.rc"      // Стандартные компоненты
+#include "res\XAMLeditor.rc2"  // Р РЋР вЂљР В Р’ВµР РЋР С“Р РЋРЎвЂњР РЋР вЂљР РЋР С“Р РЋРІР‚в„–, Р В Р вЂ¦Р В Р’Вµ Р РЋР вЂљР В Р’ВµР В РўвЂР В Р’В°Р В РЎвЂќР РЋРІР‚С™Р В РЎвЂР РЋР вЂљР РЋРЎвЂњР В Р’ВµР В РЎВР РЋРІР‚в„–Р В Р’Вµ Р В Р вЂ  Microsoft Visual C++
+#include "l.RUS\afxres.rc"      // Р В Р Р‹Р РЋРІР‚С™Р В Р’В°Р В Р вЂ¦Р В РўвЂР В Р’В°Р РЋР вЂљР РЋРІР‚С™Р В Р вЂ¦Р РЋРІР‚в„–Р В Р’Вµ Р В РЎвЂќР В РЎвЂўР В РЎВР В РЎвЂ”Р В РЎвЂўР В Р вЂ¦Р В Р’ВµР В Р вЂ¦Р РЋРІР‚С™Р РЋРІР‚в„–
 #endif
-#endif    // не APSTUDIO_INVOKED
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

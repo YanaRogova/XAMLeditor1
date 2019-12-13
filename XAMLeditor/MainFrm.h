@@ -1,27 +1,15 @@
-﻿
-// MainFrm.h: интерфейс класса CMainFrame
-//
-
-#pragma once
+﻿#pragma once
 
 class CMainFrame : public CFrameWnd
 {
 	
-protected: // создать только из сериализации
+protected:
 	CMainFrame() noexcept;
 	DECLARE_DYNCREATE(CMainFrame)
 
-// Атрибуты
-public:
-
-// Операции
-public:
-
-// Переопределение
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
 
-// Реализация
 public:
 	virtual ~CMainFrame();
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -33,11 +21,15 @@ public:
 	CStatic           m_wndStatic;
 	CStatic           m_wndStaticX;
 	CStatic           m_wndStaticY;
-// Созданные функции схемы сообщений
+	CButton           m_wndCheckbox;
+	CButton           m_wndButtonEN;
+	CButton           m_wndButtonRU;
+	
 protected:
 	afx_msg void OnClickButton();
-	afx_msg void OnFileOpen();
-	afx_msg bool EditXamlFile(std::string name, bool isDeleted = false, char prefix = 'N');
+	afx_msg void ConvertXamlFiles();
+	afx_msg bool EditXamlFile(CString name, bool isDeleted = false, char prefix = 'N');
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	//afx_msg void CMainFrame::English(LPCREATESTRUCT lpCreateStruct);
 	DECLARE_MESSAGE_MAP()
 };
