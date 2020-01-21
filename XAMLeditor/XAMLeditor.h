@@ -29,8 +29,3 @@ public:
 
 extern CXAMLeditorApp theApp;
 
-class CMsgDlg : public CDialog		// класс диалогового окна
-{
-public:
-	CMsgDlg(CWnd* pParent = NULL);
-};

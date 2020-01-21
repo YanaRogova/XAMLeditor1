@@ -78,16 +78,19 @@ void CMainFrame::OnClickButton()
 
 BOOL CMainFrame::OnEraseBkgnd(CDC* pDC)
 {
-	pDC->FillSolidRect(0, 0, 2000, 5000, RGB(245, 245, 245));
-	return 0;
+	CRect rect;
+	GetWindowRect(&rect);
+    ScreenToClient(&rect);
+    pDC->FillSolidRect(rect, RGB(245, 245, 245));
+    return TRUE;
 }
+
 
 void CMainFrame::ConvertXamlFiles()
 {
 	int iBufferSize = 100000;
 	CFileDialog dlg(TRUE, NULL, _T("*.xaml"), OFN_ALLOWMULTISELECT |
-		OFN_NOVALIDATE, _T("XAML vertex icon (*.xaml)|*.xaml|"));
-
+		OFN_NOVALIDATE, _T("XAML vector icon (*.xaml)|*.xaml|"));
 	int result = dlg.DoModal();
 	if (result == IDOK)
 	{
@@ -95,13 +98,12 @@ void CMainFrame::ConvertXamlFiles()
 		while (ps)
 		{
 			if (!EditXamlFile(dlg.GetNextPathName(ps)))
-				AfxMessageBox(_T("Error! File ") + dlg.GetPathName() + _T(" don't open."));
-			else
 			{
-				CMsgDlg msgDlg;
-				msgDlg.DoModal();
+				AfxMessageBox(_T("Error! File ") + dlg.GetPathName() + _T(" don't open."));
+				return;
 			}
 		}
+		AfxMessageBox(_T("Файл(ы) успешно конвертирован(ы)."));
 	}
 }
 
@@ -178,8 +180,6 @@ bool CMainFrame::EditXamlFile(CString name, bool isDeleted, char prefix)
 	}
 	newFile.close();
 	file.close();
-	/*if (isDeleted)
-		remove()*/
 	return true;
 }
 

@@ -22,14 +22,11 @@ public:
 	CStatic           m_wndStaticX;
 	CStatic           m_wndStaticY;
 	CButton           m_wndCheckbox;
-	CButton           m_wndButtonEN;
-	CButton           m_wndButtonRU;
 	
 protected:
 	afx_msg void OnClickButton();
 	afx_msg void ConvertXamlFiles();
 	afx_msg bool EditXamlFile(CString name, bool isDeleted = false, char prefix = 'N');
 	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
-	//afx_msg void CMainFrame::English(LPCREATESTRUCT lpCreateStruct);
 	DECLARE_MESSAGE_MAP()
 };

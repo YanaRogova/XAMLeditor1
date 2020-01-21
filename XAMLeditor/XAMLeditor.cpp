@@ -106,8 +106,3 @@ void CXAMLeditorApp::OnAppAbout()
 	aboutDlg.DoModal();
 }
 
-
-CMsgDlg::CMsgDlg(CWnd* pParent)
-	: CDialog(IDD_MSG_DIALOG, pParent)
-{
-}
