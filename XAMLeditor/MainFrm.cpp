@@ -16,9 +16,7 @@ IMPLEMENT_DYNCREATE(CMainFrame, CFrameWnd)
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 	ON_WM_CREATE()
 	ON_WM_ERASEBKGND()
-	ON_COMMAND(ID_BUTTON, &CMainFrame::OnClickButton)
-	
-	
+	ON_COMMAND(ID_BUTTON, &CMainFrame::OnClickButton)	
 END_MESSAGE_MAP()
 
 CMainFrame::CMainFrame() noexcept {}
@@ -48,7 +46,6 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	str.LoadString(IDS_DEBAG);
 	m_wndCheckbox.Create(str, WS_VISIBLE | WS_CHILD | WS_TABSTOP | BS_AUTOCHECKBOX,
 		CRect(5, 200, 80, 220), this, ID_CHECKBOX);
-
 
 	return 0;
 }
@@ -81,7 +78,7 @@ BOOL CMainFrame::OnEraseBkgnd(CDC* pDC)
 	CRect rect;
 	GetWindowRect(&rect);
     ScreenToClient(&rect);
-    pDC->FillSolidRect(rect, RGB(245, 245, 245));
+    pDC->FillSolidRect(rect, GetSysColor(COLOR_BTNFACE));
     return TRUE;
 }
 
@@ -101,11 +98,12 @@ void CMainFrame::ConvertXamlFiles()
 			{
 				AfxMessageBox(_T("Error! File ") + dlg.GetPathName() + _T(" don't open."));
 				return;
-			}
+			}			
 		}
-		AfxMessageBox(_T("Файл(ы) успешно конвертирован(ы)."));
+		AfxMessageBox(_T("Файл(ы) успешно конвертирован(ы)."), MB_ICONINFORMATION);
 	}
 }
+
 
 bool CMainFrame::EditXamlFile(CString name, bool isDeleted, char prefix)
 {
@@ -122,7 +120,7 @@ bool CMainFrame::EditXamlFile(CString name, bool isDeleted, char prefix)
 	{
 		return false;
 	}
-
+	
 	while (!file.eof())
 	{
 		std::getline(file, workString);
@@ -155,6 +153,7 @@ bool CMainFrame::EditXamlFile(CString name, bool isDeleted, char prefix)
 			while (workString.find("x:Name=") != std::string::npos)
 				workString.erase(workString.find("x:Name="), 2);
 		}
+
 		if (m_wndCheckbox.GetCheck())
 		{
 			while (workString.find("#FFFFFFFF") != std::string::npos)
@@ -182,6 +181,4 @@ bool CMainFrame::EditXamlFile(CString name, bool isDeleted, char prefix)
 	file.close();
 	return true;
 }
-
-
 
